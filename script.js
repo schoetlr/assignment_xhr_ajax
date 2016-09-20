@@ -13,6 +13,11 @@ var $ = {
       })
     }
 
+    if(options.data){
+      xhr.responseType = options.data;
+    }
+
+
     if(options.error){
       xhr.addEventListener("error", function(){
         options.error(this, this.statusText, this.status);
@@ -25,6 +30,10 @@ var $ = {
       }
     }
 
+    if(options.method){
+      var method = options.method;
+    }
+
     if(options.success){
       if(this.status >= 200 && this.status < 400){
         options.success(this.responseText, this.statusText, this);
@@ -33,10 +42,7 @@ var $ = {
       }
     }
 
-    if(options.dataType){
-      xhr.responseType = options.dataType;
-    }
-
+    
     if(options.url){
       var url = options.url;
     }
